@@ -75,14 +75,15 @@ ls WP312.filtered.vcf.gz
 ```
 
 ###### - Os seguintes comandos farão a anotação do arquivo VCF usando o VEP:
+###### - Importante: necessário download do arquivo fasta para o seu drive (tamanho do arquivo Homo_sapiens_assembly19.fasta ~ 2Gb)
 
 ```
 %%bash
 ./ensembl-vep-105.0/vep  \
   --fork 3 \
-	-i /content/WP312.filtered.vcf.gz \
-	-o /content/WP312.filtered.vcf.tsv \
-  --dir_cache /content/ \
+	-i /WP312.filtered.vcf.gz \
+	-o /WP312.filtered.vcf.tsv \
+  --dir_cache / \
   --fasta /content/Homo_sapiens_assembly19.fasta \
   --cache --offline --assembly GRCh37 --refseq  \
 	--pick --pick_allele --force_overwrite --tab --symbol --check_existing --variant_class --everything --filter_common \
@@ -130,7 +131,7 @@ ls WP312.filtered.vcf.gz
 | Nome do comando | Descrição |
 | --- | --- |
 | grep | procura no arquivo pelo termo entre aspas |
-| -c | informa o número de vezes que o termo ocorre |
+| -c | informa o número de vezes que o termo ocorreu |
 
 ###### - No arquivo em questão, devemos pular **38 linhas**
 
