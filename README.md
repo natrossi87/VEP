@@ -54,14 +54,28 @@ ensembl-vep-105.0
 ```
 ###### - Esses comandos devem ter sido capazes de imprimir na tela o manual do VEP ensembl.
 
-###### - Utizaremos o arquivo VCF:
+###### - Utizaremos o seguinte arquivo VCF neste tutorial:
 
 ```
 %%bash
-!ls /content/drive/Shareddrives/T3-2021/homo_sapiens_refseq/105_GRCh37/WP312.filtered.vcf.gz
+ls WP312.filtered.vcf.gz 
 ```
 
-###### - Os seguintes comandos adicionarão os seguintes filtros no arquivo VCF
+###### - Os seguintes comandos adicionarão os seguintes filtros no arquivo VCF:
+
+```
+%%bash
+./ensembl-vep-105.0/vep  \
+  --fork 3 \
+	-i /content/WP312.filtered.vcf.gz \
+	-o /content/WP312.filtered.vcf.tsv \
+  --dir_cache /content/ \
+  --fasta /content/Homo_sapiens_assembly19.fasta \
+  --cache --offline --assembly GRCh37 --refseq  \
+	--pick --pick_allele --force_overwrite --tab --symbol --check_existing --variant_class --everything --filter_common \
+  --fields "Uploaded_variation,Location,Allele,Existing_variation,HGVSc,HGVSp,SYMBOL,Consequence,IND,ZYG,Amino_acids,CLIN_SIG,PolyPhen,SIFT,VARIANT_CLASS,FREQS" \
+  --individual all
+  ```
 
 | Nome do comando | Descrição |
 | --- | --- |
@@ -72,16 +86,28 @@ ensembl-vep-105.0
 | --fasta | |
 | --cache | |
 
+###### Em seguida usaremos o módulo **pandas** para analisar os dados. Para tanto, instalamos o pandas por meio dos seguintes comandos:
+
 ```
-%%bash
-./ensembl-vep-105.0/vep  \
-  --fork 3 \
-	-i /content/drive/Shareddrives/T4-2022/homo_sapiens_refseq/105_GRCh37/WP312.filtered.vcf.gz \
-	-o /content/drive/Shareddrives/T4-2022/NataliaGoncalves/WP312.filtered.vcf.tsv \
-  --dir_cache /content/drive/Shareddrives/T4-2022/ \
-  --fasta /content/drive/Shareddrives/T4-2022/homo_sapiens_refseq/Homo_sapiens_assembly19.fasta \
-  --cache --offline --assembly GRCh37 --refseq  \
-	--pick --pick_allele --force_overwrite --tab --symbol --check_existing --variant_class --everything --filter_common \
-  --fields "Uploaded_variation,Location,Allele,Existing_variation,HGVSc,HGVSp,SYMBOL,Consequence,IND,ZYG,Amino_acids,CLIN_SIG,PolyPhen,SIFT,VARIANT_CLASS,FREQS" \
-  --individual all
-  ```
+!pip install pandas
+```
+
+###### - Para visualizar corretamente o arquivo tsv devemos pular as linhas que contém ##. Para verificar quantas linhas devem ser pulados podemos utilizar o seguinte comando:
+
+```
+!grep -c '##' /WP312.filtered.vcf.tsv
+```
+
+###### - No arquivo em questão, devemos pular **38 linhas**
+
+###### - Agora, usando pandas, abriremos o arquivo tsv em uma tabela por meio dos seguintes comandos:
+
+```
+import pandas as pd
+import csv
+
+tabela = pd.read_csv('WP312.filtered.vcf.tsv', sep='\t', header=0, skiprows=38)
+
+df = pd.DataFrame(tabela)
+df
+```
