@@ -7,7 +7,7 @@
 
 ------
 
-## **Workflow**
+## **Fluxo de trabalho**
 
 ### **Montando o Drive**
 ###### - No Google Colaboratory, criar um novo Notebook (Arquivo --> Novo Notebook).
@@ -48,12 +48,12 @@ cd ensembl-vep-105.0
 | build-essential | |
 | zlib1g-dev | |
 | wget | faz o download do arquivo |
-| -c | | 
+| -c | continua o download caso tenha sido interrompido | 
 | tar | extrai o arquivo comprimido no formato gz |
-| -zxvf | |
+| -zxvf | extrai, executa e imprime os nomes dos arquivos |
 | cd | altera o diretório de trabalho |
-| .INSTALL.pl | |
-| --NO_UPDATE | previne que o programa seja atualizado para versões mais recentes |
+| .INSTALL.pl | instala o arquivo .pl |
+| --NO_UPDATE | previne que a atualização para versões mais recentes |
 
 
 ###### - Em seguida podemos testar se o VEP foi corretamente instalado por meio dos seguintes comandos:
@@ -148,3 +148,5 @@ tabela = pd.read_csv('WP312.filtered.vcf.tsv', sep='\t', header=0, skiprows=38)
 df = pd.DataFrame(tabela)
 df
 ```
+
+### Bom fim de semana pra todos! :man_dancing: :woman_dancing:
