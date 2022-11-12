@@ -45,11 +45,13 @@ cd ensembl-vep-105.0
 | libmodule-build-perk |  |
 | libdbi-perl | |
 | libdbd-mysql-perl | |
+| build-essential | |
+| zlib1g-dev | |
 | tar | extrai o arquivo comprimido no formato gz |
 | -zxvf | |
-| cd | |
+| cd | altera o diretório de trabalho |
 | .INSTALL.pl | |
-| --NO_UPDATE | |
+| --NO_UPDATE | previne que o programa seja atualizado para versões mais recentes |
 
 
 ###### - Em seguida podemos testar se o VEP foi corretamente instalado por meio dos seguintes comandos:
@@ -59,19 +61,20 @@ cd ensembl-vep-105.0
 ensembl-vep-105.0
 ./vep
 ```
+
 ###### - Esses comandos devem ter sido capazes de imprimir na tela o manual do VEP ensembl.
 
 ------
 
 ### **Anotação do VCF**
-###### - Em seguida utizaremos o seguinte arquivo VCF neste tutorial:
+###### - Em seguida utizaremos anotaremos o seguinte arquivo VCF neste tutorial (arquivo disponível na raiz do repositório):
 
 ```
 %%bash
 ls WP312.filtered.vcf.gz 
 ```
 
-###### - Os seguintes comandos farão a anotação do arquivo VCF:
+###### - Os seguintes comandos farão a anotação do arquivo VCF usando o VEP:
 
 ```
 %%bash
