@@ -80,10 +80,10 @@ ls WP312.filtered.vcf.gz
 | Nome do comando | Descrição |
 | --- | --- |
 | fork | determina o número de núcleos do processador utilizados para a execução do comando |
-| -i | |
-| -o | |
+| -i | caminho do arquivo de entrada (vcf.gz) |
+| -o | caminho do arquivo de saída (vcf.tsv)|
 | --dir_cache | |
-| --fasta | |
+| --fasta | caminho do arquivo .fasta |
 | --cache | |
 | --offline | |
 | --assembly GRCh37 | |
@@ -105,8 +105,7 @@ ls WP312.filtered.vcf.gz
 !pip install pandas
 ```
 
-###### - Para visualizar corretamente o arquivo tsv devemos pular as linhas que contém "##".
-###### - Para verificar quantas linhas devem ser pulados podemos utilizar o seguinte comando:
+###### - Para visualizar corretamente o arquivo no pandas devemos pular as linhas que contém "##" no arquivo tsv. Para verificar quantas linhas devem ser pulados podemos utilizar o seguinte comando:
 
 ```
 !grep -c '##' /WP312.filtered.vcf.tsv
@@ -114,8 +113,8 @@ ls WP312.filtered.vcf.gz
 
 | Nome do comando | Descrição |
 | --- | --- |
-| grep | |
-| -c | |
+| grep | procura no arquivo pelo termo entre aspas |
+| -c | informa o número de vezes que o termo ocorre |
 
 ###### - No arquivo em questão, devemos pular **38 linhas**
 
