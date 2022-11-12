@@ -1,12 +1,12 @@
-## **Tutorial VEP**
+# **Tutorial VEP**
 
-#### **Objetivos**
+### **Objetivos**
 ###### - O objetivo deste repositório é criar um tutorial para a anotação de um VCF somático utilizando VEP-ensembl 105.0.
 ###### - Este tutorial engloba comandos para serem executados no ambiente do Google Colaboratory 
 
 ---
 
-#### **Montando o Drive**
+### **Montando o Drive**
 ###### - No Google Colaboratory, criar um novo Notebook (Arquivo --> Novo Notebook).
 ###### - Para conectar com o seu Google Grive, executar os seguintes comandos:
 
@@ -17,7 +17,7 @@ drive.mount('/content/drive')
 
 ---
 
-#### **Instalação do VEP**
+### **Instalação do VEP**
 ###### - Para instalar o VEP-ensembl 105.0 devemos digitar os seguintes comandos:
 
 ```
@@ -60,6 +60,7 @@ ensembl-vep-105.0
 
 ---
 
+### **Anotação do VCF**
 ###### - Em seguida utizaremos o seguinte arquivo VCF neste tutorial:
 
 ```
@@ -107,6 +108,7 @@ ls WP312.filtered.vcf.gz
 
 ---
 
+### **Visualização dos dados usando pandas**
 ###### Em seguida usaremos o módulo **pandas** do python para analisar os dados. Para tanto, instalamos o pandas por meio do seguinte comando:
 
 ```
