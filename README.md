@@ -54,14 +54,14 @@ ensembl-vep-105.0
 ```
 ###### - Esses comandos devem ter sido capazes de imprimir na tela o manual do VEP ensembl.
 
-###### - Utizaremos o seguinte arquivo VCF neste tutorial:
+###### - Em seguida utizaremos o seguinte arquivo VCF neste tutorial:
 
 ```
 %%bash
 ls WP312.filtered.vcf.gz 
 ```
 
-###### - Os seguintes comandos adicionarão os seguintes filtros no arquivo VCF:
+###### - Os seguintes comandos farão a anotação do arquivo VCF:
 
 ```
 %%bash
@@ -99,17 +99,23 @@ ls WP312.filtered.vcf.gz
 | --filter_common | |
 | --fields | |
 
-###### Em seguida usaremos o módulo **pandas** para analisar os dados. Para tanto, instalamos o pandas por meio dos seguintes comandos:
+###### Em seguida usaremos o módulo **pandas** do python para analisar os dados. Para tanto, instalamos o pandas por meio do seguinte comando:
 
 ```
 !pip install pandas
 ```
 
-###### - Para visualizar corretamente o arquivo tsv devemos pular as linhas que contém ##. Para verificar quantas linhas devem ser pulados podemos utilizar o seguinte comando:
+###### - Para visualizar corretamente o arquivo tsv devemos pular as linhas que contém "##".
+###### - Para verificar quantas linhas devem ser pulados podemos utilizar o seguinte comando:
 
 ```
 !grep -c '##' /WP312.filtered.vcf.tsv
 ```
+
+| Nome do comando | Descrição |
+| --- | --- |
+| grep | |
+| -c | |
 
 ###### - No arquivo em questão, devemos pular **38 linhas**
 
