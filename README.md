@@ -1,10 +1,13 @@
 # **Tutorial VEP**
 
-### **Objetivos**
-###### - O objetivo deste repositório é criar um tutorial para a anotação de um VCF somático utilizando VEP-ensembl 105.0.
-###### - Este tutorial engloba comandos para serem executados no ambiente do Google Colaboratory 
+## **Objetivos**
 
----
+##### - O objetivo deste repositório é criar um tutorial para a anotação de um VCF somático utilizando VEP-ensembl 105.0.
+##### - Este tutorial engloba comandos para serem executados no ambiente do Google Colaboratory 
+
+------
+
+## **Workflow**
 
 ### **Montando o Drive**
 ###### - No Google Colaboratory, criar um novo Notebook (Arquivo --> Novo Notebook).
@@ -15,7 +18,7 @@ from google.colab import drive
 drive.mount('/content/drive')
 ```
 
----
+------
 
 ### **Instalação do VEP**
 ###### - Para instalar o VEP-ensembl 105.0 devemos digitar os seguintes comandos:
@@ -33,11 +36,11 @@ cd ensembl-vep-105.0
 
 | Nome do comando | Descrição |
 | --- | --- |
-| sudo | |
-| apt | |
-| install | |
-| unzip | |
-| curl | |
+| sudo | executa o comando com privilégios elevados |
+| apt | instala, atualiza ou remove pacotes |
+| install | instala o pacote |
+| unzip | extrai o arquivo comprimido |
+| curl | possibilita a transferência de dados de uma URL |
 | git | |
 | libmodule-build-perk |  |
 | libdbi-perl | |
@@ -58,7 +61,7 @@ ensembl-vep-105.0
 ```
 ###### - Esses comandos devem ter sido capazes de imprimir na tela o manual do VEP ensembl.
 
----
+------
 
 ### **Anotação do VCF**
 ###### - Em seguida utizaremos o seguinte arquivo VCF neste tutorial:
@@ -106,7 +109,7 @@ ls WP312.filtered.vcf.gz
 | --filter_common | |
 | --fields | |
 
----
+------
 
 ### **Visualização dos dados usando pandas**
 ###### Em seguida usaremos o módulo **pandas** do python para analisar os dados. Para tanto, instalamos o pandas por meio do seguinte comando:
