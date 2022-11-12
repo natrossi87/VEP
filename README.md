@@ -38,10 +38,11 @@ cd ensembl-vep-105.0
 | libmodule-build-perk |  |
 | libdbi-perl | |
 | libdbd-mysql-perl | |
-
-
-
 | tar | extrai o arquivo comprimido no formato gz |
+| -zxvf | |
+| cd | |
+| .INSTALL.pl | |
+| --NO_UPDATE | |
 
 
 ###### - Em seguida podemos testar se o VEP foi corretamente instalado por meio dos seguintes comandos:
