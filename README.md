@@ -3,7 +3,7 @@
 ## **Objetivos**
 
 ##### - O objetivo deste repositório é criar um tutorial para a anotação de um VCF somático utilizando VEP-ensembl 105.0.
-##### - Este tutorial engloba comandos para serem executados no ambiente do Google Colaboratory 
+##### - Este tutorial engloba comandos para serem executados no ambiente do Google Colaboratory (https://colab.research.google.com)
 
 ------
 
@@ -47,6 +47,8 @@ cd ensembl-vep-105.0
 | libdbd-mysql-perl | |
 | build-essential | |
 | zlib1g-dev | |
+| wget | faz o download do arquivo |
+| -c | | 
 | tar | extrai o arquivo comprimido no formato gz |
 | -zxvf | |
 | cd | altera o diretório de trabalho |
@@ -71,20 +73,20 @@ ensembl-vep-105.0
 
 ```
 %%bash
-ls WP312.filtered.vcf.gz 
+ls /content/drive/WP312.filtered.vcf.gz
 ```
 
 ###### - Os seguintes comandos farão a anotação do arquivo VCF usando o VEP:
-###### - Importante: necessário download do arquivo fasta para o seu drive (tamanho do arquivo Homo_sapiens_assembly19.fasta ~ 2Gb)
+###### - IMPORTANTE: necessário download do arquivo fasta para o seu drive (tamanho do arquivo Homo_sapiens_assembly19.fasta ~ 2Gb). Esse arquivo pode ser encontrado em repositórios como o do UCSC, por exemplo (https://hgdownload.soe.ucsc.edu/downloads.html).
 
 ```
 %%bash
 ./ensembl-vep-105.0/vep  \
   --fork 3 \
-	-i /WP312.filtered.vcf.gz \
-	-o /WP312.filtered.vcf.tsv \
-  --dir_cache / \
-  --fasta /content/Homo_sapiens_assembly19.fasta \
+	-i /content/drive/WP312.filtered.vcf.gz \
+	-o /content/drive/WP312.filtered.vcf.tsv \
+  --dir_cache /content/drive \
+  --fasta /content/drive/Homo_sapiens_assembly19.fasta \
   --cache --offline --assembly GRCh37 --refseq  \
 	--pick --pick_allele --force_overwrite --tab --symbol --check_existing --variant_class --everything --filter_common \
   --fields "Uploaded_variation,Location,Allele,Existing_variation,HGVSc,HGVSp,SYMBOL,Consequence,IND,ZYG,Amino_acids,CLIN_SIG,PolyPhen,SIFT,VARIANT_CLASS,FREQS" \
