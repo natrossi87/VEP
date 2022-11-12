@@ -85,6 +85,19 @@ ls WP312.filtered.vcf.gz
 | --dir_cache | |
 | --fasta | |
 | --cache | |
+| --offline | |
+| --assembly GRCh37 | |
+| --refseq | |
+| --pick | |
+| --pick_allele | |
+| --force_overwrite| |
+| --tab| |
+| --symbol | |
+| --check_existing | |
+| --variant_class | |
+| --everything | |
+| --filter_common | |
+| --fields | |
 
 ###### Em seguida usaremos o módulo **pandas** para analisar os dados. Para tanto, instalamos o pandas por meio dos seguintes comandos:
 
