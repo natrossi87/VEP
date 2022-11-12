@@ -29,6 +29,18 @@ cd ensembl-vep-105.0
 
 | Nome do comando | Descrição |
 | --- | --- |
+| sudo | |
+| apt | |
+| install | |
+| unzip | |
+| curl | |
+| git | |
+| libmodule-build-perk |  |
+| libdbi-perl | |
+| libdbd-mysql-perl | |
+
+
+
 | tar | extrai o arquivo comprimido no formato gz |
 
 
