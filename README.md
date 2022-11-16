@@ -92,24 +92,9 @@ ls /content/drive/WP312.filtered.vcf.gz
 | -o | caminho do arquivo de saída com extensão vcf.tsv |
 | --dir_cache | caminho do diretório cache |
 | --fasta | caminho do arquivo .fasta |
-| --cache | |
-| --offline | |
 | --assembly GRCh37 | número do assembly utilizado na análise (no caso, GRCh37) |
-| --refseq | |
-| --pick | |
 
 ###### - IMPORTANTE: neste exemplo utilizamos apenas alguns filtros, mas outros filtros estão disponíveis e podem ser utilizados. Para verificar quais filtros estão disponíveis, acessar a [documentação do VEP-ensembl](https://www.ensembl.org/info/docs/tools/vep/script/vep_filter.html).
-
-| Nome do filtro | Descrição |
-| --pick_allele | |
-| --force_overwrite| |
-| --tab| |
-| --symbol | |
-| --check_existing | |
-| --variant_class | |
-| --everything | |
-| --filter_common | |
-| --fields | |
 
 ------
 
