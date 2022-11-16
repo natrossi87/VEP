@@ -1,4 +1,4 @@
-# **Tutorial VEP**
+# **Tutorial de anotação de variantes usando VEP-ensembl**
 
 ## **Objetivos**
 
@@ -120,7 +120,7 @@ ls /content/drive/WP312.filtered.vcf.gz
 
 ##### - Agora, usando pandas, podemos visualizar o arquivo tsv em uma tabela por meio dos seguintes comandos:
 
-```
+```python
 import pandas as pd
 import csv
 
