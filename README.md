@@ -10,15 +10,14 @@
 ## **Introdução**
 
 ##### - O Ensembl Variant Effect Predictor (VEP-ensembl) determina o efeito de variantes (SNPs, inserções, deleções, CNVs ou variantes estruturais) nos genes, transcritos, sequências de proteínas e regiões regulatórias.
-##### - Utizaremos um 
 
 -----
 
 ## **Fluxo de trabalho**
 
 ### **Montando o Drive**
-###### - No [Google Colaboratory](https://colab.research.google.com), criar um novo Notebook (Arquivo -> Novo Notebook).
-###### - Para conectar com o seu Google Grive, executar os seguintes comandos:
+##### - No [Google Colaboratory](https://colab.research.google.com), criar um novo Notebook (Arquivo -> Novo Notebook).
+##### - Para conectar com o seu Google Grive, executar os seguintes comandos:
 
 ```
 from google.colab import drive
@@ -28,7 +27,7 @@ drive.mount('/content/drive')
 ------
 
 ### **Instalação do VEP**
-###### - Para instalar o VEP-ensembl 105.0 devemos digitar os seguintes comandos:
+##### - Para instalar o VEP-ensembl 105.0 devemos digitar os seguintes comandos:
 
 ```
 %%bash
@@ -39,7 +38,7 @@ cd ensembl-vep-105.0
 ./INSTALL.pl --NO_UPDATE 
 ```
 
-###### Descrição dos comandos acima:
+##### Descrição dos comandos acima:
 
 | Nome do comando | Descrição |
 | --- | --- |
@@ -49,7 +48,7 @@ cd ensembl-vep-105.0
 | ./INSTALL.pl --NO_UPDATE | instala o vep-ensembl-105.0 e previne a atualização do VEP-ensembl para versões mais recentes |
 
 
-###### - Em seguida podemos testar se o VEP foi corretamente instalado por meio dos seguintes comandos:
+##### - Em seguida podemos testar se o VEP foi corretamente instalado por meio dos seguintes comandos:
 
 ```
 %%bash
@@ -57,20 +56,20 @@ ensembl-vep-105.0
 ./vep
 ```
 
-###### - Esses comandos devem ter sido capazes de imprimir na tela o manual do VEP ensembl (caso contrário, repetir o passo anterior).
+##### - Esses comandos devem ter sido capazes de imprimir na tela o manual do VEP ensembl (caso contrário, repetir o passo anterior).
 
 ------
 
 ### **Anotação do VCF**
-###### - Em seguida utizaremos anotaremos o seguinte arquivo VCF neste tutorial (arquivo disponível na raiz do repositório):
+##### - Em seguida utizaremos anotaremos o seguinte arquivo VCF neste tutorial (arquivo disponível na raiz do repositório):
 
 ```
 %%bash
 ls /content/drive/WP312.filtered.vcf.gz
 ```
 
-###### - Os seguintes comandos farão a anotação do arquivo VCF usando o VEP:
-###### - IMPORTANTE: necessário fazer o download do arquivo fasta (Homo_sapiens_assembly19.fasta) para o seu drive (tamanho do arquivo ~ 2Gb). Esse arquivo pode ser encontrado em repositórios como o do [UCSC](https://hgdownload.soe.ucsc.edu/downloads.html), dentre outros.
+##### - Os seguintes comandos farão a anotação do arquivo VCF usando o VEP:
+##### - IMPORTANTE: necessário fazer o download do arquivo fasta (Homo_sapiens_assembly19.fasta) para o seu drive (tamanho do arquivo ~ 2Gb). Esse arquivo pode ser encontrado em repositórios como o do [UCSC](https://hgdownload.soe.ucsc.edu/downloads.html), dentre outros.
 
 ```
 %%bash
@@ -111,13 +110,13 @@ ls /content/drive/WP312.filtered.vcf.gz
 ------
 
 ### **Visualização dos dados usando pandas**
-###### Em seguida usaremos o módulo **pandas** do python para analisar os dados. Para tanto, instalamos o pandas por meio do seguinte comando:
+##### Em seguida usaremos o módulo **pandas** do python para analisar os dados. Para tanto, instalamos o pandas por meio do seguinte comando:
 
 ```
 !pip install pandas
 ```
 
-###### - Para visualizar corretamente o arquivo no pandas devemos pular as linhas que contém "##" no arquivo tsv. Para verificar quantas linhas devem ser pulados podemos utilizar o seguinte comando:
+##### - Para visualizar corretamente o arquivo no pandas devemos pular as linhas que contém "##" no arquivo tsv. Para verificar quantas linhas devem ser pulados podemos utilizar o seguinte comando:
 
 ```
 !grep -c '##' /WP312.filtered.vcf.tsv
@@ -128,9 +127,9 @@ ls /content/drive/WP312.filtered.vcf.gz
 | grep | procura no arquivo pelo termo entre aspas |
 | -c | informa o número de vezes que o termo ocorreu |
 
-###### - No arquivo em questão, devemos pular **38 linhas**
+##### - No arquivo em questão, devemos pular **38 linhas**
 
-###### - Agora, usando pandas, abriremos o arquivo tsv em uma tabela por meio dos seguintes comandos:
+##### - Agora, usando pandas, abriremos o arquivo tsv em uma tabela por meio dos seguintes comandos:
 
 ```
 import pandas as pd
@@ -141,5 +140,3 @@ tabela = pd.read_csv('WP312.filtered.vcf.tsv', sep='\t', header=0, skiprows=38)
 df = pd.DataFrame(tabela)
 df
 ```
-
-### Bom fim de semana pra todos! :man_dancing: :woman_dancing:
