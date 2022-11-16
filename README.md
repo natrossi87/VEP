@@ -129,3 +129,9 @@ tabela = pd.read_csv('WP312.filtered.vcf.tsv', sep='\t', header=0, skiprows=38)
 df = pd.DataFrame(tabela)
 df
 ```
+
+###### - Exemplo:
+
+| Uploaded_variation | Location	| Allele | Existing_variation |	HGVSc | HGVSp |	SYMBOL | Consequence | IND | ZYG | Amino_acids | CLIN_SIG |	PolyPhen |	SIFT | VARIANT_CLASS | FREQS |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1_874643_C/A |	1:874643 |	A	| - |	NM_001385640.1:c.1058-9C>A |	- |	SAMD11 |	splice_polypyrimidine_tract_variant,intron_var... |	WP312 |	HET |	- |	- |	- |	-	| SNV |	- |
