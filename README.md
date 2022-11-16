@@ -3,14 +3,21 @@
 ## **Objetivos**
 
 ##### - O objetivo deste repositório é criar um tutorial para a anotação de um VCF somático utilizando VEP-ensembl 105.0.
-##### - Este tutorial engloba comandos para serem executados no ambiente do Google Colaboratory (https://colab.research.google.com)
+##### - Este tutorial engloba comandos para serem executados no ambiente do Google Colaboratory.
 
 ------
+
+## **Introdução**
+
+##### - O Ensembl Variant Effect Predictor (VEP-ensembl) determina o efeito de variantes (SNPs, inserções, deleções, CNVs ou variantes estruturais) nos genes, transcritos, sequências de proteínas e regiões regulatórias.
+##### - Utizaremos um 
+
+-----
 
 ## **Fluxo de trabalho**
 
 ### **Montando o Drive**
-###### - No Google Colaboratory, criar um novo Notebook (Arquivo --> Novo Notebook).
+###### - No [Google Colaboratory](https://colab.research.google.com), criar um novo Notebook (Arquivo -> Novo Notebook).
 ###### - Para conectar com o seu Google Grive, executar os seguintes comandos:
 
 ```
@@ -36,24 +43,10 @@ cd ensembl-vep-105.0
 
 | Nome do comando | Descrição |
 | --- | --- |
-| sudo | executa o comando com privilégios elevados |
-| apt | instala, atualiza ou remove pacotes |
-| install | instala o pacote |
-| unzip | extrai o arquivo comprimido |
-| curl | possibilita a transferência de dados de uma URL |
-| git | |
-| libmodule-build-perk |  |
-| libdbi-perl | |
-| libdbd-mysql-perl | |
-| build-essential | |
-| zlib1g-dev | |
-| wget | faz o download do arquivo |
-| -c | continua o download caso tenha sido interrompido | 
-| tar | extrai o arquivo comprimido no formato gz |
-| -zxvf | extrai, executa e imprime os nomes dos arquivos |
-| cd | altera o diretório de trabalho |
-| .INSTALL.pl | instala o arquivo .pl |
-| --NO_UPDATE | previne que a atualização para versões mais recentes |
+| wget -c | faz o download do link a seguir, retomando o download caso ele seja interrompido |
+| tar -zxvf | extrai o aqruivo comprimido |
+| cd ensembl-vep-105.0 | altera o diretório de trabalho para o diretório descrito |
+| ./INSTALL.pl --NO_UPDATE | instala o vep-ensembl-105.0 e previne a atualização do VEP-ensembl para versões mais recentes |
 
 
 ###### - Em seguida podemos testar se o VEP foi corretamente instalado por meio dos seguintes comandos:
@@ -64,7 +57,7 @@ ensembl-vep-105.0
 ./vep
 ```
 
-###### - Esses comandos devem ter sido capazes de imprimir na tela o manual do VEP ensembl.
+###### - Esses comandos devem ter sido capazes de imprimir na tela o manual do VEP ensembl (caso contrário, repetir o passo anterior).
 
 ------
 
@@ -77,7 +70,7 @@ ls /content/drive/WP312.filtered.vcf.gz
 ```
 
 ###### - Os seguintes comandos farão a anotação do arquivo VCF usando o VEP:
-###### - IMPORTANTE: necessário download do arquivo fasta para o seu drive (tamanho do arquivo Homo_sapiens_assembly19.fasta ~ 2Gb). Esse arquivo pode ser encontrado em repositórios como o do UCSC, por exemplo (https://hgdownload.soe.ucsc.edu/downloads.html).
+###### - IMPORTANTE: necessário fazer o download do arquivo fasta (Homo_sapiens_assembly19.fasta) para o seu drive (tamanho do arquivo ~ 2Gb). Esse arquivo pode ser encontrado em repositórios como o do [UCSC](https://hgdownload.soe.ucsc.edu/downloads.html), dentre outros.
 
 ```
 %%bash
