@@ -15,7 +15,7 @@
 
 ## **Fluxo de trabalho**
 
-### **Montando o Drive**
+### **1. Montando o Drive**
 ##### - No [Google Colaboratory](https://colab.research.google.com), criar um novo Notebook (Arquivo -> Novo Notebook).
 ##### - Para conectar com o seu Google Grive, executar os seguintes comandos:
 
@@ -26,7 +26,7 @@ drive.mount('/content/drive')
 
 ------
 
-### **Instalação do VEP**
+### **2. Instalação do VEP**
 ##### - Para instalar o VEP-ensembl 105.0 devemos digitar os seguintes comandos:
 
 ```
@@ -60,8 +60,8 @@ ensembl-vep-105.0
 
 ------
 
-### **Anotação do VCF**
-##### - Em seguida utizaremos anotaremos o seguinte arquivo VCF neste tutorial (arquivo disponível na raiz do repositório):
+### **3. Anotação do VCF**
+##### - Em seguida utizaremos anotaremos o seguinte arquivo VCF (WP312.flitered,vcf.gz) neste tutorial. (O arquivo está disponível na raiz deste repositório):
 
 ```
 %%bash
@@ -69,34 +69,38 @@ ls /content/drive/WP312.filtered.vcf.gz
 ```
 
 ##### - Os seguintes comandos farão a anotação do arquivo VCF usando o VEP:
-##### - IMPORTANTE: necessário fazer o download do arquivo fasta (Homo_sapiens_assembly19.fasta) para o seu drive (tamanho do arquivo ~ 2Gb). Esse arquivo pode ser encontrado em repositórios como o do [UCSC](https://hgdownload.soe.ucsc.edu/downloads.html), dentre outros.
+###### - IMPORTANTE: necessário fazer o download do arquivo fasta (Homo_sapiens_assembly19.fasta) para o seu drive (tamanho do arquivo ~ 2Gb). Esse arquivo pode ser encontrado online em repositórios como o do [UCSC](https://hgdownload.soe.ucsc.edu/downloads.html), dentre outros.
 
 ```
 %%bash
 ./ensembl-vep-105.0/vep  \
-  --fork 3 \
-	-i /content/drive/WP312.filtered.vcf.gz \
-	-o /content/drive/WP312.filtered.vcf.tsv \
-  --dir_cache /content/drive \
-  --fasta /content/drive/Homo_sapiens_assembly19.fasta \
-  --cache --offline --assembly GRCh37 --refseq  \
-	--pick --pick_allele --force_overwrite --tab --symbol --check_existing --variant_class --everything --filter_common \
-  --fields "Uploaded_variation,Location,Allele,Existing_variation,HGVSc,HGVSp,SYMBOL,Consequence,IND,ZYG,Amino_acids,CLIN_SIG,PolyPhen,SIFT,VARIANT_CLASS,FREQS" \
-  --individual all
+--fork 3 \
+-i /content/drive/WP312.filtered.vcf.gz \
+-o /content/drive/WP312.filtered.vcf.tsv \
+--dir_cache /content/drive \
+--fasta /content/drive/Homo_sapiens_assembly19.fasta \
+--cache --offline --assembly GRCh37 --refseq  \
+--pick --pick_allele --force_overwrite --tab --symbol --check_existing --variant_class --everything --filter_common \
+--fields "Uploaded_variation,Location,Allele,Existing_variation,HGVSc,HGVSp,SYMBOL,Consequence,IND,ZYG,Amino_acids,CLIN_SIG,PolyPhen,SIFT,VARIANT_CLASS,FREQS" \
+--individual all
   ```
 
 | Nome do comando | Descrição |
 | --- | --- |
 | fork | determina o número de núcleos do processador utilizados para a execução do comando |
-| -i | caminho do arquivo de entrada (vcf.gz) |
-| -o | caminho do arquivo de saída (vcf.tsv)|
-| --dir_cache | |
+| -i | caminho do arquivo de entrada com extensão vcf.gz |
+| -o | caminho do arquivo de saída com extensão vcf.tsv |
+| --dir_cache | caminho do diretório cache |
 | --fasta | caminho do arquivo .fasta |
 | --cache | |
 | --offline | |
-| --assembly GRCh37 | |
+| --assembly GRCh37 | número do assembly utilizado na análise (no caso, GRCh37) |
 | --refseq | |
 | --pick | |
+
+###### - IMPORTANTE: neste exemplo utilizamos apenas alguns filtros, mas outros filtros estão disponíveis e podem ser utilizados. Para verificar quais filtros estão disponíveis, acessar a [documentação do VEP-ensembl](https://www.ensembl.org/info/docs/tools/vep/script/vep_filter.html).
+
+| Nome do filtro | Descrição |
 | --pick_allele | |
 | --force_overwrite| |
 | --tab| |
@@ -109,14 +113,15 @@ ls /content/drive/WP312.filtered.vcf.gz
 
 ------
 
-### **Visualização dos dados usando pandas**
-##### Em seguida usaremos o módulo **pandas** do python para analisar os dados. Para tanto, instalamos o pandas por meio do seguinte comando:
+### **4. Visualização dos dados usando pandas**
+
+##### Em seguida utilizaremos a biblioteca **pandas** do Python para visualizar os dados do arquivo anotado. Para tanto, instalamos o pandas por meio do seguinte comando:
 
 ```
 !pip install pandas
 ```
 
-##### - Para visualizar corretamente o arquivo no pandas devemos pular as linhas que contém "##" no arquivo tsv. Para verificar quantas linhas devem ser pulados podemos utilizar o seguinte comando:
+##### - Para visualizar corretamente o arquivo tsv no pandas devemos pular as linhas que contém "##". Para verificar quantas linhas devem ser puladas podemos utilizar o seguinte comando:
 
 ```
 !grep -c '##' /WP312.filtered.vcf.tsv
@@ -124,12 +129,11 @@ ls /content/drive/WP312.filtered.vcf.gz
 
 | Nome do comando | Descrição |
 | --- | --- |
-| grep | procura no arquivo pelo termo entre aspas |
-| -c | informa o número de vezes que o termo ocorreu |
+| grep -c | procura no arquivo pelo termo entre aspas e informa a contagem do número de ocorrências |
 
-##### - No arquivo em questão, devemos pular **38 linhas**
+###### - Assim, verificamos que no arquivo utilizado neste tutorial devemos pular **38 linhas**.
 
-##### - Agora, usando pandas, abriremos o arquivo tsv em uma tabela por meio dos seguintes comandos:
+##### - Agora, usando pandas, podemos visualizar o arquivo tsv em uma tabela por meio dos seguintes comandos:
 
 ```
 import pandas as pd
